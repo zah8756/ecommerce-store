@@ -14,8 +14,8 @@ export default function LoginPage() {
 	} as { error: string | null });
 	return (
 		<div className='flex justify-center items-center h-screen bg-gradient-to-br from-background via-primary/20 to-background'>
-			<Card className=' p-6 w-full max-w-md mx-auto '>
-				<p className='text-xl font-semibold tracking-tight'>Vanta</p>
+			<Card className=' p-8 w-full max-w-md mx-auto '>
+				<p className='text-2xl font-bold tracking-[0.2em] uppercase'>Vanta</p>
 				<CardHeader>
 					<CardTitle>Login to your account</CardTitle>
 				</CardHeader>
@@ -41,13 +41,17 @@ export default function LoginPage() {
 								placeholder='Password'
 							/>
 						</div>
-						<Button className='cursor-pointer' disabled={isPending} type='submit'>
+						<Button
+							className='cursor-pointer'
+							disabled={isPending}
+							type='submit'>
 							{isPending ? (
 								<Loader2 className='w-4 h-4 animate-spin' />
 							) : (
 								"Login"
 							)}
 						</Button>
+						{state?.error && <p className='text-red-500'>{state?.error}</p>}
 						<div className='relative'>
 							<div className='absolute inset-0 flex items-center'>
 								<span className='w-full border-t border-border' />
@@ -56,11 +60,15 @@ export default function LoginPage() {
 								<span className='bg-card px-2 text-muted-foreground'>or</span>
 							</div>
 						</div>
-						<p>
+						<p className='text-center text-sm text-muted-foreground'>
 							Don&apos;t have an account?{" "}
-							<Link href='/auth/register'>Register</Link>
+							<Link
+								href='/auth/register'
+								className='text-white font-medium hover:underline'>
+								Register
+							</Link>
 						</p>
-						{state?.error && <p className='text-red-500'>{state?.error}</p>}
+
 						{/* TODO: Add forgot password link */}
 						{/* add google login button */}
 					</form>
