@@ -3,13 +3,27 @@ import { prisma } from "@/lib/prisma";
 
 export default async function ProductsPage() {
 	const products = await prisma.product.findMany();
+
 	return (
-		<div className='flex flex-col gap-4'>
-			<h1 className='text-2xl font-bold'>Products</h1>
-			<div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4'>
-				{products.map((product) => (
-					<ProductCard key={product.id} product={product} />
-				))}
+		<div className='max-w-screen-xl mx-auto'>
+			<h1 className='text-2xl font-bold mb-6'>Products</h1>
+
+			<div className='flex gap-6'>
+				{/* Left Sidebar — Filters */}
+				<aside className='w-56 shrink-0'>
+					{/* TODO: Add category filter */}
+					{/* TODO: Add price range filter */}
+					<p className='text-muted-foreground text-sm'>Filters coming soon</p>
+				</aside>
+
+				{/* Right — Product Grid */}
+				<div className='flex-1'>
+					<div className='grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3'>
+						{products.map((product) => (
+							<ProductCard key={product.id} product={product} />
+						))}
+					</div>
+				</div>
 			</div>
 		</div>
 	);
