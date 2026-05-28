@@ -5,12 +5,12 @@ export default async function ProductsPage() {
 	const products = await prisma.product.findMany();
 
 	return (
-		<div className='max-w-screen-xl mx-auto'>
+		<div className='max-w-screen-xl mx-auto px-4 py-8'>
 			<h1 className='text-2xl font-bold mb-6'>Products</h1>
 
 			<div className='flex gap-6'>
 				{/* Left Sidebar — Filters */}
-				<aside className='w-56 shrink-0'>
+				<aside className='hidden lg:block w-56 shrink-0'>
 					{/* TODO: Add category filter */}
 					{/* TODO: Add price range filter */}
 					<p className='text-muted-foreground text-sm'>Filters coming soon</p>
