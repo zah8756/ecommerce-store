@@ -3,6 +3,7 @@ import { Geist, Geist_Mono, Inter } from "next/font/google";
 import "./globals.css";
 import { cn } from "@/lib/utils";
 import NavBar from "@/components/NavBar";
+import { Toaster } from "@/components/ui/sonner";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-sans" });
 
@@ -39,6 +40,7 @@ export default function RootLayout({
 			)}>
 			<body suppressHydrationWarning className='min-h-full flex flex-col dark'>
 				<NavBar />
+				<Toaster />
 				<main className='flex-1 '>{children}</main>
 			</body>
 		</html>

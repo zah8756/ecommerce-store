@@ -1,7 +1,8 @@
-import { ShoppingCartIcon } from "lucide-react";
+
 import { Button } from "./ui/button";
 import Link from "next/link";
 import { auth, signOut } from "@/auth";
+import CartBadge from "./CartBadge";
 
 const NavBar = async () => {
 	const session = await auth();
@@ -48,8 +49,8 @@ const NavBar = async () => {
 						</Button>
 					</Link>
 				)}
-				<Button variant='ghost' size='icon'>
-					<ShoppingCartIcon className='w-5 h-5' />
+				<Button variant='ghost' size='icon' className='cursor-pointer px-8'>
+					<CartBadge />
 				</Button>
 			</div>
 		</nav>
