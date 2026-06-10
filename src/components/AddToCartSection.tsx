@@ -2,9 +2,9 @@
 
 import { useCartStore } from "@/lib/store/cartStore";
 import { Button } from "./ui/button";
-import { Input } from "./ui/input";
 import { Product } from "@prisma/client";
 import { useState } from "react";
+import QuantitySelector from "./QuantitySelector";
 
 export default function AddToCartSection({ product }: { product: Product }) {
 	const addToCart = useCartStore((state) => state.addToCart);
@@ -19,41 +19,7 @@ export default function AddToCartSection({ product }: { product: Product }) {
 			{product.stock > 0 ? (
 				<>
 					<p className='text-sm text-green-500 font-medium'>In Stock</p>
-					<div className='flex items-center gap-2'>
-						<Button
-							variant='outline'
-							size='sm'
-							className='px-3 cursor-pointer'
-							onClick={() => setQuantity((prev) => prev - 1)}
-							disabled={quantity <= 1}>
-							-
-						</Button>
-						<Input
-							type='number'
-							className='w-16 text-center'
-							value={quantity}
-							onChange={(e) => {
-								const value = Number(e.target.value);
-								if (value > product.stock) {
-									setQuantity(product.stock);
-								} else if (value < 1) {
-									setQuantity(1);
-								} else {
-									setQuantity(value);
-								}
-							}}
-							min={1}
-							max={product.stock}
-						/>
-						<Button
-							variant='outline'
-							size='sm'
-							className='px-3 cursor-pointer'
-							onClick={() => setQuantity((prev) => prev + 1)}
-							disabled={quantity >= product.stock}>
-							+
-						</Button>
-					</div>
+					<QuantitySelector stock={product.stock} initialQuantity={quantity} onQuantityChange={setQuantity} />
 				</>
 			) : (
 				<p className='text-sm text-red-500 font-medium'>Out of Stock</p>
