@@ -10,6 +10,9 @@ import { Button } from "@/components/ui/button";
 import QuantitySelector from "@/components/QuantitySelector";
 import { Card, CardHeader, CardContent, CardTitle } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
+import { createCheckoutSession } from "@/lib/actions/checkout";
+import { toast } from "sonner";
+
 const CartPage = () => {
 	const items = useCartStore((state) => state.items);
 	const [products, setProducts] = useState<Product[]>([]);
@@ -130,8 +133,24 @@ const CartPage = () => {
 									</div>
 									<Button
 										variant='default'
-										className='w-full mt-2 text-lg font-bold cursor-pointer'>
-										Checkout
+										className='w-full mt-2 text-lg font-bold cursor-pointer'
+										disabled={loading}
+										onClick={async () => {
+											setLoading(true);
+											const res = await createCheckoutSession(items);
+											if (res.error) {
+												toast.error(res.error);
+												setLoading(false);
+											} else {
+												window.location.href = res.url as string;
+												setLoading(false);
+											}
+										}}>
+										{loading ? (
+											<Loader2 className='w-4 h-4 animate-spin' />
+										) : (
+											"Checkout"
+										)}
 									</Button>
 								</CardContent>
 							</Card>
