@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, Inter } from "next/font/google";
+import { Bodoni_Moda, Geist, Geist_Mono, Inter } from "next/font/google";
 import "./globals.css";
 import { cn } from "@/lib/utils";
 import NavBar from "@/components/NavBar";
@@ -14,6 +14,11 @@ const geistSans = Geist({
 
 const geistMono = Geist_Mono({
 	variable: "--font-geist-mono",
+	subsets: ["latin"],
+});
+
+const bodoniModa = Bodoni_Moda({
+	variable: "--font-bodoni",
 	subsets: ["latin"],
 });
 
@@ -35,6 +40,7 @@ export default function RootLayout({
 				"antialiased",
 				geistSans.variable,
 				geistMono.variable,
+				bodoniModa.variable,
 				"font-sans",
 				inter.variable,
 			)}>
