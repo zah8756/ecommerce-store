@@ -18,7 +18,7 @@ const images = [
 		h1text: "Vanta",
 		ptext: "Modern furniture, timeless design.",
 		link: "/products",
-		linkText: "Explore the Collection →",
+		linkText: "Explore the Collection ",
 	},
 	{
 		src: "/hero2.jpg",
@@ -27,7 +27,7 @@ const images = [
 		h1text: "Timeless Style",
 		ptext: "Classic furniture, elegant design.",
 		link: "/products",
-		linkText: "Shop Now →",
+		linkText: "Shop Now ",
 	},
 	{
 		src: "/hero3.jpg",
@@ -36,16 +36,16 @@ const images = [
 		h1text: "Transform Your Space",
 		ptext: "Bring your vision to life with our custom solutions.",
 		link: "/products",
-		linkText: "Get Started →",
+		linkText: "Get Started ",
 	},
 	{
 		src: "/hero4v2.jpg",
 		alt: "Hero 4",
 		priority: false,
-		h1text: "Your Vision, Our Expertise",
-		ptext: "Custom design, tailored to your needs.",
+		h1text: "Quaility unmatched",
+		ptext: "Crafted with precision and care.",
 		link: "/products",
-		linkText: "Discover Our Services →",
+		linkText: "see the collection",
 	},
 ];
 
@@ -84,13 +84,15 @@ const HeroCarousel = () => {
 								className='absolute inset-0 bg-gradient-to-t from-black/50 via-black/20 to-black/10'
 							/>
 							<div className='absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-10 text-white text-center '>
-								<h1 className='font-bodoni text-9xl font- tracking-tight mb-8'>
+								<h1 className='font-bodoni md:text-8xl text-6xl font-medium tracking-[0.02em] mb-6'>
 									{image.h1text}
 								</h1>
-								<p className='text-3xl mb-8'>{image.ptext}</p>
+								<p className='text-lg md:text-xl text-white/90 tracking-wide mb-8 max-w-md mx-auto'>
+									{image.ptext}
+								</p>
 								<Link
 									href={image.link}
-									className='text-2xl font-medium cursor-pointer underline hover:text-gray-300'>
+									className='inline-block border border-white/80 px-6 py-3 text-sm tracking-[0.15em] uppercase rounded-sm hover:bg-white hover:text-black transition-colors '>
 									{image.linkText}
 								</Link>
 							</div>
